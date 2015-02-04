@@ -32,4 +32,10 @@
 *.lds
 *.map
 *.srec
+*.cmd
+*.su
+*.tmp
 tags
+u-boot
+u-boot.bin
+
