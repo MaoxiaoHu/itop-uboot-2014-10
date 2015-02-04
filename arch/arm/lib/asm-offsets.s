@@ -18,7 +18,7 @@
 @ -I /home/topo/Documents/itop-uboot-2014-10/arch/arm/include
 @ -iprefix /home/topo/Documents/arm-linux-4.7.3/bin/../lib/gcc/arm-cortex_a8-linux-gnueabi/4.7.3/
 @ -isysroot /home/topo/Documents/arm-linux-4.7.3/bin/../arm-cortex_a8-linux-gnueabi/sysroot
-@ -D __KERNEL__ -D __UBOOT__ -D CONFIG_SYS_TEXT_BASE=0x43e00000 -D __ARM__
+@ -D __KERNEL__ -D __UBOOT__ -D CONFIG_SYS_TEXT_BASE=0x7de00000 -D __ARM__
 @ -D DO_DEPS_ONLY -D KBUILD_STR(s)=#s
 @ -D KBUILD_BASENAME=KBUILD_STR(asm_offsets)
 @ -D KBUILD_MODNAME=KBUILD_STR(asm_offsets)

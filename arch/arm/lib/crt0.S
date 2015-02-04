@@ -78,12 +78,23 @@ clr_gd:
 	strlo	r0, [r1]		/* clear 32-bit GD word */
 	addlo	r1, r1, #4		/* move to next */
 	blo	clr_gd
+
 #if defined(CONFIG_SYS_MALLOC_F_LEN) && !defined(CONFIG_SPL_BUILD)
 	sub	sp, sp, #CONFIG_SYS_MALLOC_F_LEN
 	str	sp, [r9, #GD_MALLOC_BASE]
 #endif
+
 	/* mov r0, #0 not needed due to above code */
+#if defined(JLINKDBG_STAGE2)
+    b board_init_f
+#elif defined(JLINKDBG_STAGE1)
+    b board_init_f
+#elif defined(JLINKDBG_STAGE1_AUTOJMP)
     bl board_init_f
+#else
+    bl board_init_f
+#endif
+
 #if ! defined(CONFIG_SPL_BUILD)
 
 /*
@@ -102,8 +113,12 @@ clr_gd:
 	ldr	r0, [r9, #GD_RELOCADDR]		/* r0 = gd->relocaddr */
 	b	relocate_code
 here:
-//ldr sp,=0x7dcfff08
-//ldr r9,=0x7dcfff14
+
+#if defined(JLINKDBG_STAGE2)
+    ldr sp,=0x7dcfff08
+    ldr r9,=0x7dcfff14
+#endif
+
 /* Set up final (full) environment */
 	bl	c_runtime_cpu_setup	/* we still call old routine here */
 

@@ -15,6 +15,10 @@
 
 #define CONFIG_SYS_PROMPT	"itop # "	/* Monitor Command Prompt */
 
+#undef JLINKDBG_STAGE1
+#undef JLINKDBG_STAGE2
+#undef JLINKDBG_STAGE1_AUTOJMP
+
 #define DEBUG
 
 #define CONFIG_TIZEN			/* TIZEN lib */
@@ -35,9 +39,15 @@
 #define CONFIG_SYS_MEMTEST_END		(CONFIG_SYS_SDRAM_BASE + 0x5E00000)
 #define CONFIG_SYS_LOAD_ADDR		(CONFIG_SYS_SDRAM_BASE + 0x3E00000)
 
-/*#define CONFIG_SYS_TEXT_BASE		0x7de00000*/
-
-#define CONFIG_SYS_TEXT_BASE		0x43e00000
+#if defined(JLINKDBG_STAGE2)
+ #define CONFIG_SYS_TEXT_BASE		0x7de00000
+#elif defined(JLINKDBG_STAGE1)
+ #define CONFIG_SYS_TEXT_BASE		0x43e00000
+#elif defined(JLINKDBG_STAGE1_AUTOJMP)
+ #define CONFIG_SYS_TEXT_BASE		0x43e00000
+#else
+ #define CONFIG_SYS_TEXT_BASE		0x43e00000
+#endif
 
 /* select serial console configuration */
 #define CONFIG_SERIAL2
