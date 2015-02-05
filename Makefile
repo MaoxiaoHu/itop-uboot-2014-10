@@ -185,8 +185,14 @@ export	HOSTARCH HOSTOS
 #########################################################################
 
 # set default to nothing for native builds
+ifdef CCACHE
 ifneq ($(HOSTARCH),$(ARCH))
-CROSS_COMPILE ?= arm-linux-
+CROSS_COMPILE ?=ccache arm-linux-
+endif
+else
+ifneq ($(HOSTARCH),$(ARCH))
+CROSS_COMPILE ?=arm-linux-
+endif
 endif
 
 KCONFIG_CONFIG	?= .config
