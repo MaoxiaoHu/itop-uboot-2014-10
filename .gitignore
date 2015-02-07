@@ -35,6 +35,7 @@
 *.cmd
 *.su
 *.tmp
+*.swp
 tags
 u-boot
 u-boot.bin

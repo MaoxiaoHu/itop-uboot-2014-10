@@ -1,4 +1,21 @@
 # itop-uboot-2014-10
+
+--------------------说明-------------------------
+基于迅为4412精英版的u-boot-2014-10移植
+
+如何编译：
+1. 在源码目录执行 make trats2_defconfig
+2. 在源码目录执行 make
+
+如何制作TF卡启动盘：
+1. 至少需要清空TF卡前1MB的空间。
+2. 将文件 E4412_N.bl1.bin 烧写到TF卡的第1（而不是第0）个block。
+3. 将文件 checksum_bl2_14k.bin 烧写到TF卡的第17个block。
+4. 将文件 u-boot.bin 烧写到TF卡的第49个block。
+5. 将TF卡插入卡槽，上电启动。
+
+
+-------------------Introduction------------------
 u-boot for xunwei iTop4412 evaluation board based on u-boot-2014-10
 
 How to make:
